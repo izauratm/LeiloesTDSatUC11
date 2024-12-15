@@ -45,7 +45,8 @@ public class ProdutosDAO {
             }
         }          
     }
-    public ArrayList<ProdutosDTO> listarProdutos(){ArrayList<ProdutosDTO> produtos = new ArrayList<>();
+    public ArrayList<ProdutosDTO> listarProdutos(){
+    ArrayList<ProdutosDTO> produtos = new ArrayList<>();
     String sql = "SELECT * FROM produtos"; 
     try {
         conn = new conectaDAO().connectDB();
@@ -74,10 +75,10 @@ public class ProdutosDAO {
     return produtos;
     }
 
-    void venderProduto(int parseInt) {
+    public void venderProduto(int parseInt) {
          String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
 
-    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UC11?useSSL=false, root, spyke289");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UC11?useSSL=false, root, spyke289");
          PreparedStatement prep = conn.prepareStatement(sql)) {
 
        // prep.setInt(1, id);
@@ -85,5 +86,7 @@ public class ProdutosDAO {
     } catch (Exception e) {
         e.printStackTrace(); 
     }
+    public ArrayList<ProdutosDTO> listarProdutosVendidos(){
+    ArrayList<ProdutosDTO> produtos = new ArrayList<>();    
     }
 }
