@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
 public class ProdutosDAO { 
     
     Connection conn;
@@ -30,7 +29,7 @@ public class ProdutosDAO {
             prep.setString(3, produto.getStatus());
             
             prep.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cadastro foi realizado com sucesso!");
+            //JOptionPane.showMessageDialog(null, "Cadastro foi realizado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto: " + e.getMessage());
         } finally {
@@ -46,7 +45,6 @@ public class ProdutosDAO {
             }
         }          
     }
-    
     public ArrayList<ProdutosDTO> listarProdutos(){
                 return listagem;
     }
