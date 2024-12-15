@@ -28,7 +28,6 @@ public class ProdutosDAO {
             prep.setString(1, produto.getNome());
             prep.setInt(2, produto.getValor());
             prep.setString(3, produto.getStatus());
-            
             prep.executeUpdate();
             //JOptionPane.showMessageDialog(null, "Cadastro foi realizado com sucesso!");
         } catch (Exception e) {
