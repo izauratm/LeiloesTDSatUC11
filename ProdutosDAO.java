@@ -40,7 +40,7 @@ public class ProdutosDAO {
                     conn.close(); 
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro ao fechar conexão!" + e.getMessage());
+                //JOptionPane.showMessageDialog(null, "Erro ao fechar conexão!" + e.getMessage());
             }
         }          
     }
@@ -68,7 +68,7 @@ public class ProdutosDAO {
             if (prep != null) prep.close();
             if (conn != null) conn.close();
         } catch (Exception e) {
-            System.err.println("Erro ao fechar conexão: " + e.getMessage());
+            //System.err.println("Erro ao fechar conexão: " + e.getMessage());
         }
     }
     return produtos;
@@ -77,7 +77,7 @@ public class ProdutosDAO {
     public void venderProduto(int id) {
         String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11?useSSL=false, root, spyke289");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11?useSSL=false", "root", "spyke289");
          PreparedStatement prep = conn.prepareStatement(sql)) {
 
         prep.setInt(1, id);
@@ -108,4 +108,4 @@ public class ProdutosDAO {
         }
         return listarVendidos;                     
         }    
-        }        
+}         

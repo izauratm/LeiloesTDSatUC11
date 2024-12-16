@@ -12,6 +12,25 @@ public class vendasVIEW extends javax.swing.JFrame {
         initComponents();
         listarVendidos();
     }
+        private void listarVendidos() {
+        try { 
+            ProdutosDAO produtosdao = new ProdutosDAO();
+            DefaultTableModel model = (DefaultTableModel)listarVendidos.getModel(); 
+            model.setNumRows(0); 
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarVendidos(); 
+            for (ProdutosDTO produto : listagem) {         
+            model.addRow(new Object[]{ 
+                produto.getId(), 
+                produto.getNome(), 
+                produto.getValor(), 
+                produto.getStatus() 
+            }); 
+            }
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(this, "Erro ao listar produtos vendidos: " + e.getMessage()); 
+        }
+    }    
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,7 +102,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         cadastroVIEW.setVisible(true);
        
     }//GEN-LAST:event_btnVoltarActionPerformed
-    private void listarVendidos() {
+    /*private void listarVendidos() {
         try { 
             ProdutosDAO produtosdao = new ProdutosDAO();
             DefaultTableModel model = (DefaultTableModel)listarVendidos.getModel(); 
@@ -100,7 +119,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         } catch (Exception e) { 
             JOptionPane.showMessageDialog(this, "Erro ao listar produtos vendidos: " + e.getMessage()); 
         }
-    }
+    }*/
         public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -137,4 +156,3 @@ public class vendasVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listarVendidos;
     // End of variables declaration//GEN-END:variables
 }
-    
