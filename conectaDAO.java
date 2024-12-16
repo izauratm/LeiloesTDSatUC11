@@ -22,15 +22,4 @@ public class conectaDAO {
         }
         return conn;
     }
-    
- public void closeConnection(Connection conn) {
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão: " + e.getMessage());
-            }
-        }
-    }
 }
-
